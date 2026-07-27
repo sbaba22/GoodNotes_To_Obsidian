@@ -21,8 +21,5 @@ def parse_note(response: str) -> Note:
     return Note(
         title=data["title"],
         markdown=data["markdown"],
-        subject=data["subject"],
-        course=data["course"],
-        tags=data["tags"],
         links=data["links"],
     )

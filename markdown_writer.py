@@ -25,25 +25,19 @@ def write_note(note: Note) -> Path:
     output_path = destination / filename
 
     frontmatter = "---\n"
-
-    if note.subject:
-        frontmatter += f"subject: {note.subject}\n"
-
-    if note.course:
-        frontmatter += f"course: {note.course}\n"
-
     frontmatter += f"source: {note.source}\n"
     frontmatter += f"page: {note.page}\n"
-
-    if note.tags:
-        frontmatter += "tags:\n"
-        for tag in note.tags:
-            frontmatter += f"  - {tag}\n"
-
     frontmatter += "---\n\n"
 
     with open(output_path, "w", encoding="utf-8") as f:
         f.write(frontmatter)
         f.write(note.markdown)
+
+        if note.links:
+            f.write("\n\n---\n\n")
+            f.write("## Related notes\n\n")
+
+            for link in note.links:
+                f.write(f"- {link}\n")
 
     return output_path

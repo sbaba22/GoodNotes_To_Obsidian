@@ -8,12 +8,15 @@ The JSON MUST have exactly this structure:
 
 {
   "title": "...",
-  "subject": "...",
-  "course": "...",
-  "tags": ["..."],
-  "links": ["..."],
+  "links": [
+    "[[photon]]",
+    "[[wave-particle duality]]",
+    "[[schrodinger equation]]"
+  ],
   "markdown": "..."
 }
+
+Rules:
 
 Rules:
 
@@ -23,9 +26,10 @@ Rules:
 - Do not invent information that is not reasonably inferable.
 - Transcribe the page faithfully.
 - Preserve mathematical formulas using LaTeX.
+- Use Obsidian-compatible MathJax syntax. Inline equations must use $...$. Display equations must use $$...$$.
 - Preserve lists and headings.
 - If diagrams cannot be represented, briefly describe them inside square brackets.
-- Generate a concise and meaningful title.
-- Infer the subject and course if possible.
-- Add a few useful tags.
-- Add related concepts as links.
+- Generate a concise and meaningful title if not present.
+- Generate 3–8 related concepts formatted as valid Obsidian wikilinks.
+- The links field must contain only wikilinks (e.g. [[Photons]], [[Planck constant]]).
+- Choose concepts that are closely related to the content and could reasonably exist as separate notes.
